@@ -34,7 +34,7 @@ void encontrar_palabra(char input[100]){
             p = strtok(NULL, " ");
 }
         while (cont!=0){
-        //printf("%s\n",le[cont-1]);
+        printf("CodinoInicial: %s\n",le[cont-1]);
         encontrar2(le[cont-1]);
         cont--;
         }
