@@ -59,6 +59,7 @@ void encontrar2(char input2[100]){
                     p2 = strtok(NULL, "::");
                     }
  while (cont2!=0){
+ //sisepuedoperoalreveznoseporque
         //printf("%s\n",le[cont-1]);
         printf("%s\n",le2[cont2-1]);
         cont2--;
