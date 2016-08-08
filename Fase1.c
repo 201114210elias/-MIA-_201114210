@@ -60,12 +60,24 @@ void encontrar2(char input2[100]){
                     }
                     p2 = strtok(NULL, "::");
                     }
-        while (cont2!=0){
-        //sisepuedoperoalreveznoseporque
-        //printf("%s\n",le[cont-1]);
-        //printf("Codigo %s\n",le2[cont2-1]);
 
-        cont2--;
+        for (int e2=0; e2<strlen(le2); e2++){
+            if (strcmp("mkdisk",le2[e2])==0){
+
+            printf("\nencontro mkdisk\n");
+
+             for (int e3=0; e3<strlen(le3); e3++){
+            if (strcmp("-size",le2[e2])==0){
+
+            printf("\nencontro mkdisk\n");
+            break;
+            }
+
+            }
+
+            break;
+            }
+
         }
 
 
