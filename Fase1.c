@@ -34,7 +34,7 @@ void encontrar_palabra(char input[100]){
             p = strtok(NULL, " ");
 }
         while (cont!=0){
-        printf("CodinoInicial: %s\n",le[cont-1]);
+        //printf("CodinoInicial: %s\n",le[cont-1]);
         encontrar2(le[cont-1]);
         cont--;
         }
@@ -54,15 +54,17 @@ void encontrar2(char input2[100]){
                 for (int a=0; a<strlen(input2); a++){
                     if(p2)
                     {
-                       printf("codigo: %s\n", p2);
+                      // printf("codigo: %s\n", p2);
                         le2[a]= p2;
+                        cont2 ++;
                     }
                     p2 = strtok(NULL, "::");
                     }
- while (cont2!=0){
- //sisepuedoperoalreveznoseporque
+        while (cont2!=0){
+        //sisepuedoperoalreveznoseporque
         //printf("%s\n",le[cont-1]);
-        printf("%s\n",le2[cont2-1]);
+        //printf("Codigo %s\n",le2[cont2-1]);
+
         cont2--;
         }
 
@@ -78,12 +80,13 @@ printf("Universidad de San Carlos de Guatemala\n");
 printf("Abraham Enrique Jr. Elias Elias\n");
 printf("2011 14210    -MIA- \n");
 
-
-
+do{
+    printf("-> ");
     fflush(stdin);
     fgets(codigo,100,stdin);
     encontrar_palabra(codigo);
-
+    printf("\n");
+} while(strcmp(codigo,"salir"));
 
 
 return 0;
