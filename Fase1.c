@@ -23,7 +23,7 @@ void encontrar_palabra(char input[100]){
             if(p)
             {
            //printf("Primera parte %s\n", p);
- 
+  
 
                 le[a]=p;
 
