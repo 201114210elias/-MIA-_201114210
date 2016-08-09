@@ -62,34 +62,52 @@ void encontrar2(char input2[100]){
                     p2 = strtok(NULL, "::");
                     }
 
-
+char *temp[20];
+char *temp2[20];
+int c2=0;
+int c3=0;
        // printf("%d\n",cont2);
             while (cont2!=0){
             //sisepuedoperoalreveznoseporque
+            if (cont2==1){
+            //printf("Codigo %s\n",le2[cont2-1]);
+            temp[c2]= le2[cont2-1];
+            //printf("%s %s \n",temp[c2],temp2[c3-1]);
+            prueba(temp[c2],temp2[c3-1]);
+            //printf("Codigo %s\n",temp[c2]);
+            }else{
+            //printf("Codigo2 %s\n",le2[cont2-1]);
+            temp2[c3]=le2[cont2-1];
+            //printf("Codigo2 %s\n",temp2[c2]);
 
-            printf("Codigo %s\n",le2[cont2-1]);
+            }
+           //prueba(le2[cont2-1]);
 
-           // prueba(le2[cont2-1]);
 
+
+                c2 ++;
+                c3 ++;
                 cont2--;
             }
 
 
 }
-void prueba(char input3[100]){
+void prueba(char input3[100], char input4[100]){
 
 
 if (strcmp(input3,"-size")==0){
-printf("ingreso size\n");
+printf("%s %s \n",input3,input4);
 }
 
 if (strcmp(input3,"+unit")==0){
-printf("ingreso unit\n");
+
+printf("%s %s \n",input3,input4);
 }
 
 if (strcmp(input3,"mkdisk")==0){
 printf("ingreso mkdisk\n");
 }
+
 
 }
 
