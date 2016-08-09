@@ -57,28 +57,25 @@ void encontrar2(char input2[100]){
                       // printf("codigo: %s\n", p2);
                         le2[a]= p2;
                         cont2 ++;
+                        printf("%d\n",cont2);
                     }
                     p2 = strtok(NULL, "::");
                     }
 
-        for (int e2=0; e2<strlen(le2); e2++){
-            if (strcmp("mkdisk",le2[e2])==0){
+        if (strcmp(le2[cont2-1],"mkdisk")==0){
+        printf("encontro mkdisk\n");
+        printf("%d\n",cont2);
+            while (cont2!=0){
+            //sisepuedoperoalreveznoseporque
+            //printf("%s\n",le[cont-1]);
+            printf("Codigo %s\n",le2[cont2-1]);
 
-            printf("\nencontro mkdisk\n");
 
-             for (int e3=0; e3<strlen(le3); e3++){
-            if (strcmp("-size",le2[e2])==0){
-
-            printf("\nencontro mkdisk\n");
-            break;
-            }
-
-            }
-
-            break;
-            }
+                cont2--;
+                }
 
         }
+
 
 
 }
