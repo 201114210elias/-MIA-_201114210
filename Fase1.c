@@ -96,12 +96,15 @@ void prueba(char input3[100], char input4[100]){
 
 
 if (strcmp(input3,"-size")==0){
+
+
 printf("%s %s \n",input3,input4);
 }
 
 if (strcmp(input3,"+unit")==0){
 
 printf("%s %s \n",input3,input4);
+
 }
 
 if (strcmp(input3,"mkdisk")==0){
