@@ -98,9 +98,21 @@ void encontrar2(char input2[100]){
 
 }
 
-void prueba(char input3[100], char input4[100], int c){
 
+char nomb[100];
+
+void prueba(char input3[100], char input4[100], int c){
+ int tamal;
 char pp[100];
+char siz[100];
+char siz2[100];
+char unit[100];
+char unit2[100];
+char path[100];
+char path2[200];
+char namee[100];
+char namee2[100];
+
         if(c==0){
            if(strcasecmp(input3,"mkdisk")==0){
              printf("mkdisk \n");
@@ -114,15 +126,78 @@ char pp[100];
            //printf("%s\n",pp);
 
             if(strcasecmp(input3,"-size")==0){
-                printf("%s %s \n", input3 , input4);
+
+                strcpy(siz,input3);
+                strcpy(siz2,input4);
+
+                sscanf(siz2,"%d",&tamal);
+                printf("%s %d \n", siz , tamal);
             }
+
+            if(strcasecmp(input3,"+unit")==0){
+
+                strcpy(unit,input3);
+                strcpy(unit2,input4);
+                printf("%s %s \n", unit , unit2);
+            }
+
+            if(strcasecmp(input3,"-path")==0){
+
+                strcpy(path,input3);
+                strcpy(path2,input4);
+
+
+                printf("%s %s \n", path , path2);
+            }
+            if(strcasecmp(input3,"-name")==0){
+
+                strcpy(namee,input3);
+                strcpy(namee2,input4);
+                    char *na;
+
+                    na = strtok(namee2, "\"");
+                    for (int a1; a1<strlen(namee2); a1++){
+                        if(na)
+                        {
+                            //printf("%s\n", p);
+                            strcpy(nomb,na);
+                        }
+
+                        na = strtok(NULL, "\"");
+                    }
+
+                printf("%s %s \n", namee , nomb);
+            }
+            if((strcasecmp(pp,"mkdisk")==0)&&(strcasecmp(siz,"-size")==0)&&(strcasecmp(path,"-path")==0)&&(strcasecmp(namee,"-name")==0)){
+
+                mkdisk(path2,nomb);
+           }
 
 
            }
 
 
+
 }
-void mkdisk(){
+void mkdisk(char primero[100], char segundo[100]){
+//printf("%s %s", primero , segundo);
+            char dire[201];
+                    char *na2;
+
+                    na2 = strtok(primero, "\"");
+                    for (int a1; a1<strlen(primero); a1++){
+                        if(na2)
+                        {
+                            //printf("%s\n", p);
+                            strcpy(dire,na2);
+                        }
+
+                        na2 = strtok(NULL, "\"");
+                    }
+
+            strcat(dire,segundo);
+            printf("direccion: %s \n", dire);
+            //FILE *archivo = fopen(\
 
 }
 
