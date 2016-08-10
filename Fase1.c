@@ -11,7 +11,7 @@
 #else
 #define LIMPIA "cls"
 #endif
-
+int ayuda=0;
 void encontrar_palabra(char input[100]){
     input[strlen(input)-1]='\0';
     //printf("%s",input);
@@ -22,95 +22,110 @@ void encontrar_palabra(char input[100]){
         for (int a; a<strlen(input); a++){
             if(p)
             {
-           //printf("Primera parte %s\n", p);
 
 
-                le[a]=p;
+
+                le[cont]=p;
 
                 cont++;
 
             }
-
+            //printf("Primera parte %s\n", p);
             p = strtok(NULL, " ");
 }
-        while (cont!=0){
-        //printf("CodinoInicial: %s\n",le[cont-1]);
-        encontrar2(le[cont-1]);
-        cont--;
+        while (ayuda <cont){
+        //printf("Primera parte %s\n", le[ayuda]);
+        encontrar2(le[ayuda]);
+        ayuda ++;
         }
         //ya vamos!
 
 }
-int c4=0;
+    int c4=0;
+    int cont2=0;
+
+    int c2=0;
+    int c3=0;
+     char *le2[20];
+    char *temp[20];
+    char *temp2[20];
+
 void encontrar2(char input2[100]){
 
 
 
     //printf("%s\n",input2);
-    int cont2=0;
+
     char *p2;
-    char *le2[20];
+    int resi;
     p2 = strtok(input2, "::");
                 for (int a=0; a<strlen(input2); a++){
                     if(p2)
                     {
-                      // printf("codigo: %s\n", p2);
-                        le2[a]= p2;
+
+                        le2[cont2]= p2;
                         cont2 ++;
 
                     }
+                     //printf("codigo: %s %d\n", p2 , cont2);
                     p2 = strtok(NULL, "::");
                     }
+            while (c2 < cont2){
+            if(c2==0){
 
-char *temp[20];
-char *temp2[20];
-int c2=0;
-int c3=0;
+            //printf(" %s \n", le2[c2]);
+            prueba(le2[c2], le2[c2+1], c2);
 
-       // printf("%d\n",cont2);
-            while (c4==cont2){
-            //sisepuedoperoalreveznoseporque
-            if (cont2==1){
-            //printf("Codigo %s\n",le2[cont2-1]);
-            temp[c2]= le2[cont2-1];
-            //printf("%s %s \n",temp[c2],temp2[c3-1]);
-            prueba(temp[c2],temp2[c3-1]);
-            //printf("Codigo %s\n",temp[c2]);
             }else{
-            //printf("Codigo2 %s\n",le2[cont2-1]);
-            int pepe= cont2 -1;
+
+            int pepe= c2 + 1;
             temp2[c3]=le2[pepe];
-            //printf("Codigo2 %s\n",temp2[c2]);
-
+            resi = c2%2;
+            //printf("residuo %d\n", resi);
+            if(resi==1){
+            //printf("c %s %s\n", le2[c2], le2[c2+1]);
+            prueba(le2[c2], le2[c2+1],c2);
             }
-           //prueba(le2[cont2-1]);
-
-
-                c2 ++;
-                c3 ++;
-                c4 ++;
 
 
             }
+
+            c2++;
+
+            }
+
 
 
 }
-void prueba(char input3[100], char input4[100]){
+
+void prueba(char input3[100], char input4[100], int c){
+
+char pp[100];
+        if(c==0){
+           if(strcasecmp(input3,"mkdisk")==0){
+             printf("mkdisk \n");
+            strcpy(pp,input3);
+
+           }
+
+           }
+
+        if(c>0){
+           //printf("%s\n",pp);
+
+            if(strcasecmp(input3,"-size")==0){
+                printf("%s %s \n", input3 , input4);
+            }
 
 
-            printf("%s %s \n",input3,input4);
-
-
-
-
-
+           }
 
 
 }
 void mkdisk(){
 
-
 }
+
 
 int main() {
 
