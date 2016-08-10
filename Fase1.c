@@ -41,7 +41,7 @@ void encontrar_palabra(char input[100]){
         //ya vamos!
 
 }
-
+int c4=0;
 void encontrar2(char input2[100]){
 
 
@@ -66,8 +66,9 @@ char *temp[20];
 char *temp2[20];
 int c2=0;
 int c3=0;
+
        // printf("%d\n",cont2);
-            while (cont2!=0){
+            while (c4==cont2){
             //sisepuedoperoalreveznoseporque
             if (cont2==1){
             //printf("Codigo %s\n",le2[cont2-1]);
@@ -77,17 +78,19 @@ int c3=0;
             //printf("Codigo %s\n",temp[c2]);
             }else{
             //printf("Codigo2 %s\n",le2[cont2-1]);
-            temp2[c3]=le2[cont2-1];
+            int pepe= cont2 -1;
+            temp2[c3]=le2[pepe];
             //printf("Codigo2 %s\n",temp2[c2]);
 
             }
            //prueba(le2[cont2-1]);
 
 
-
                 c2 ++;
                 c3 ++;
-                cont2--;
+                c4 ++;
+
+
             }
 
 
@@ -95,21 +98,16 @@ int c3=0;
 void prueba(char input3[100], char input4[100]){
 
 
-if (strcmp(input3,"-size")==0){
+            printf("%s %s \n",input3,input4);
 
 
-printf("%s %s \n",input3,input4);
-}
 
-if (strcmp(input3,"+unit")==0){
 
-printf("%s %s \n",input3,input4);
+
+
 
 }
-
-if (strcmp(input3,"mkdisk")==0){
-printf("ingreso mkdisk\n");
-}
+void mkdisk(){
 
 
 }
