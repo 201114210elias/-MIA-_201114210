@@ -1,0 +1,1 @@
+mkdisk -size::454 -path::"/home/enrique/Documentos/" -name::"prueba.dsk"
