@@ -15,11 +15,12 @@
 
 char a2[100];
 int momento=0;
+int kk2;
 
 void cambiar(char a1[100]){
 
-    int kk= 0;
 
+int kk= 0;
     for ( int i=0;i<strlen(a1);i++ ){
 
         if ( a1[i] == '-' ){
@@ -36,25 +37,29 @@ void cambiar(char a1[100]){
         kk++;
 
     }
+    kk2= kk;
 
-
-  //printf("\nCambiado es : %s\n",a2);
-/*  while (momento < kk){
+ //printf("\nCambiado es : %s\n",a2);
+ /*while (momento < kk2){
   a2[momento]='\0';
   momento ++;
+
   }*/
 
-  encontrar_palabra(a2);
+ encontrar_palabra(a2);
 }
 
 int ayuda=0;
 
+
 void encontrar_palabra(char input[100]){
+
     input[strlen(input)-1]='\0';
-    //printf("%s",input);
+    printf("ddd %s\n",input);
     char *le[20];
     char *p;
     int cont=0;
+    printf("P %d %d\n",ayuda, cont);
     p = strtok(input, "+");
         for (int a; a<strlen(input); a++){
             if(p)
@@ -71,7 +76,7 @@ void encontrar_palabra(char input[100]){
             p = strtok(NULL, "+");
 }
         while (ayuda <cont){
-        //printf("Primera parte %s\n", le[ayuda]);
+        printf("Primera parte %s\n", le[ayuda]);
         encontrar2(le[ayuda]);
         ayuda ++;
         }
@@ -87,14 +92,15 @@ void encontrar_palabra(char input[100]){
     char *temp[20];
     char *temp2[20];
 
+
 void encontrar2(char input2[100]){
 
 
-
-   // printf("%s\n",input2);
+int resi;
+   //printf("%s\n",input2);
 
     char *p2;
-    int resi;
+
     p2 = strtok(input2, "::");
                 for (int a=0; a<strlen(input2); a++){
                     if(p2)
@@ -298,6 +304,12 @@ if (size2 >0){
                 printf("tamaño %lu\n", tam);
 
                 }
+                if(strcasecmp(unid,"")==0){
+
+                tam= 1024 *1024*size2;
+                printf("tamaño %lu\n", tam);
+
+                }
                 if(strcasecmp(unid,"k")==0){
                 tam=1024*size2;
                 printf("tamaño %lu\n", tam);
@@ -314,7 +326,7 @@ if (size2 >0){
 
             while(sali < cont2){
             le2[sali]='\0';
-            a2[sali]='\0';
+
 
             temp[sali]='\0';
             temp2[sali]='\0';
@@ -323,12 +335,16 @@ if (size2 >0){
             //printf(" cantidad %d %s %s %s \n",sali, le2[sali],a2);
             sali ++;
             }
-            ayuda =0;
-            c4=0;
-            cont2=0;
+        ayuda=0;
+        cont2=0;
 
-            c2=0;
-            c3=0;
+
+ while (momento < kk2){
+  a2[momento]='\0';
+  momento ++;
+
+  }
+
 
 
 
