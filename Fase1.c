@@ -22,6 +22,9 @@ void cambiar(char a1[100]){
 
 int kk= 0;
     for ( int i=0;i<strlen(a1);i++ ){
+        if(a1[i] == '#'){
+        comentario();
+        }
 
         if ( a1[i] == '-' ){
 
@@ -39,44 +42,51 @@ int kk= 0;
     }
     kk2= kk;
 
- //printf("\nCambiado es : %s\n",a2);
- /*while (momento < kk2){
+/*printf("\nCambiado es : %s\n",a2);
+ while (momento < kk2){
   a2[momento]='\0';
   momento ++;
 
-  }*/
-
+  }
+*/
  encontrar_palabra(a2);
 }
 
-int ayuda=0;
+void comentario(){
+
+printf("comentario\n");
+
+
+
+
+}
 
 
 void encontrar_palabra(char input[100]){
-
+int ayuda=0;
     input[strlen(input)-1]='\0';
-    printf("ddd %s\n",input);
+  printf("ddd %s\n",input);
     char *le[20];
     char *p;
     int cont=0;
-    printf("P %d %d\n",ayuda, cont);
+    printf("Permitame %ss %d %d\n",input, ayuda, cont);
     p = strtok(input, "+");
-        for (int a; a<strlen(input); a++){
+        for (int a=0; a<strlen(input); a++){
             if(p)
             {
 
-
+                //printf("verificacion %s\n", p);
 
                 le[cont]=p;
 
                 cont++;
 
             }
-            //printf("Primera parte %s\n", p);
+
             p = strtok(NULL, "+");
 }
         while (ayuda <cont){
-        printf("Primera parte %s\n", le[ayuda]);
+       printf("Primera parte %s\n", le[ayuda]);
         encontrar2(le[ayuda]);
         ayuda ++;
         }
@@ -86,18 +96,18 @@ void encontrar_palabra(char input[100]){
     int c4=0;
     int cont2=0;
 
-    int c2=0;
+
     int c3=0;
      char *le2[20];
     char *temp[20];
     char *temp2[20];
 
-
+ int resi;
 void encontrar2(char input2[100]){
 
 
-int resi;
-   //printf("%s\n",input2);
+int c2=0;
+printf("\n verificacion B %s contador2 %d\n",input2, c2);
 
     char *p2;
 
@@ -110,13 +120,15 @@ int resi;
                         cont2 ++;
 
                     }
-                     //printf("codigo: %s %d\n", p2 , cont2);
+                   // printf("codigo: %s %d\n", p2 , cont2);
                     p2 = strtok(NULL, "::");
                     }
+
+                    //printf("\n verificacion  %d contador2 %d  asdfa %d\n",c2, cont2, resi);
             while (c2 < cont2){
             if(c2==0){
 
-            //printf(" %s \n", le2[c2]);
+            //printf(" holaaa xD %s \n", le2[c2]);
             prueba(le2[c2], le2[c2+1], c2);
 
             }else{
@@ -126,7 +138,7 @@ int resi;
             resi = c2%2;
             //printf("residuo %d\n", resi);
             if(resi==1){
-            //printf(" %s %s\n", le2[c2], le2[c2+1]);
+            //printf("wuajajaja  %s %s\n", le2[c2], le2[c2+1]);
             prueba(le2[c2], le2[c2+1],c2);
             }
 
@@ -163,15 +175,20 @@ void prueba(char input3[100], char input4[100], int c){
 
 
         if(c==0){
+
             input3[strlen(input3)-1]='\0';
+
            if(strcasecmp(input3,"mkdisk")==0){
              printf("mkdisk \n");
-            strcpy(pp,input3);
+             strcpy(pp,input3);
 
            }
+
+          // printf("prueba: %s%d\n", input3,c);
            if(strcasecmp(input3,"rmdisk")==0){
-             printf("rmdisk \n");
+
             strcpy(elimi,input3);
+            printf("Eliminando %s \n", elimi);
 
            }
            }
@@ -218,7 +235,13 @@ void prueba(char input3[100], char input4[100], int c){
             if((strcasecmp(pp,"mkdisk")==0)&&(strcasecmp(siz,"size")==0)&&(strcasecmp(path,"path")==0)&&(strcasecmp(namee,"name")==0)){
 
                 mkdisk(path2,namee2,tamal,unit2);
-               // printf("juntos primero %s %s \n", path2 , namee2);
+               printf("juntos primero %s %s %s %s %s %s \n", path2 , namee2,pp,siz,path,namee);
+
+           }
+           if((strcasecmp(elimi,"rmdisk")==0)&&(strcasecmp(path,"path")==0)){
+
+           //printf("juntos primero %s jaja %s \n", elimi , path2);
+            rmdisk(path2);
            }
 
 
@@ -231,6 +254,28 @@ void prueba(char input3[100], char input4[100], int c){
 struct estructura{
     int id;
 };
+
+void rmdisk(char direccion[100]){
+//printf(" jaja %s \n", path2);
+
+                    char *dire44[201];
+                    char *na244;
+
+                    na244 = strtok(path2, "\"");
+                    for (int b1=0; b1<strlen(path2); b1++){
+                        if(na244)
+                        {
+                            //printf("%s\n", na244);
+                            dire44[b1]=na244;
+                        }
+
+                        na244 = strtok(NULL, "\"");
+                    }
+        char bufferCarpeta[200];
+        printf("Direccion a eliminar %s \n", dire44[0]);
+        snprintf(bufferCarpeta,sizeof(bufferCarpeta),"rm %s", dire44[0]);
+        remove(dire44[0]);
+}
 void mkdisk(char primero[100], char segundo[100],int size, char unidad[20]){
         //printf("juntos?? %s %s \n", primero , segundo);
         //printf("%d",size);
@@ -317,28 +362,37 @@ if (size2 >0){
                 char bufferArchivo[100];
                 snprintf(bufferArchivo,sizeof(bufferArchivo),"dd if=/dev/zero of=%s bs=1 count=%lu", Direccion,tam);
                 system(bufferArchivo);
-                printf("Se creo Archivo\n");
+                printf("Se creo Archivo\n\n\n");
 
                 }
             }
         }
-
-
+ printf(" cantidad1 %d %s %s %s %s %s %s \n",sali, le2[sali],path,siz,unit,namee, temp);
             while(sali < cont2){
             le2[sali]='\0';
 
 
             temp[sali]='\0';
             temp2[sali]='\0';
-             path[sali]='\0';
-             path2[sali]='\0';
-            //printf(" cantidad %d %s %s %s \n",sali, le2[sali],a2);
+            path[sali]='\0';
+            path2[sali]='\0';
+            pp[sali]='\0';
+
+            siz[sali]='\0';
+            siz2[sali]='\0';
+            unit[sali]='\0';
+            unit2[sali]='\0';
+            namee[sali]='\0';
+            namee2[sali]='\0';
+
+            printf(" cantidad %d %s %s %s %s %s %s \n",sali, le2[sali],path,siz,unit,namee, temp);
+
             sali ++;
             }
-        ayuda=0;
-        cont2=0;
 
-
+        cont2 =0;
+printf(" cantidad3 %s %s %s %s  \n",path,siz,unit,namee);
+        resi =0 ;
  while (momento < kk2){
   a2[momento]='\0';
   momento ++;
